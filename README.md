@@ -3,6 +3,8 @@
 
 ---
 ### Option 1-- **[-mount]**
+**[-mount]** Don't descend directories on other filesystems. An alternate name for -xdev. This option is provided **for compatibility with some other versions of find.**
+
 **Example 1**
 
 Command:
@@ -33,6 +35,8 @@ Output:
 ```
 
 This returns the list of all files in a specific directory **911report**.
+**[-mount]** avoid listing files in other directories.
+
 
 **Example 2**
 
@@ -87,8 +91,12 @@ This option is usful when we want to search files in a specific directory.
 
 
 
+
 ---
 ### Option 2-- **[-empty]**
+**[-empty]** Returns true if a file is empty (contains nothing) and is either a regular file or a directory.
+
+
 **Example 1**
 
 Command:
@@ -128,8 +136,23 @@ This returns nothing because no file in 911report is empty.
 **This option might be useful when we need to find empty/unedited/useless files in a directory.**
 
 
+In the directory given for lab3 there is no files that is empty thus testing find-mount in any directory would not return anything.
+However, the find -empty command wwould be especially helpful in the future when we need to find the files that are empty/ the files that has been created by mistake and did not have any contents in it.
+
+
+
 ---
 ### Option 3-- **[-type]**
+
+**[-type]** Returns files in a directory that has a specific file type:
+- b: block (buffered) special files
+- c: character (unbuffered) special files
+- d: directory
+- p: named pipes FIFOs (first in first out)
+- f: regular files
+- I: symbolic links. This is never true if the -L option or the -follow option was specified, unless the symbolic link is broken. If you want to search for symbolic links when -L is in effect, use -xtype.
+- s: sockets
+- D: doors (a Solaris file type)
 
 **Example 1**
 
@@ -162,6 +185,7 @@ Output:
 ```
 ```
 This command returns nothing because there is no file of type **c(character special file)** in directory **911report**.
+
 
 **Example 3**
 
